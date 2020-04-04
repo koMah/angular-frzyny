@@ -1,0 +1,44 @@
+<mat-toolbar>DSO Calculator</mat-toolbar>
+
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+	<mat-tab-group animationDuration="0ms">
+		<mat-tab label="Weapon">
+			<app-weapon></app-weapon>
+		</mat-tab>
+		<mat-tab label="Adornment">
+			<app-family></app-family>
+		</mat-tab>
+		<mat-tab label="Amulet">
+			<app-personal></app-personal>
+		</mat-tab>
+		<mat-tab label="Cloak"></mat-tab>
+		<mat-tab label="Belt"></mat-tab>
+		<mat-tab label="Ring #1"></mat-tab>
+    <mat-tab label="Ring #2"></mat-tab>
+    <mat-tab label="Amulet"></mat-tab>
+    <mat-tab label="Amulet"></mat-tab>
+    <mat-tab label="Amulet"></mat-tab>
+	</mat-tab-group>
+
+
+
+
+	<br>
+	<button mat-button>Save</button>
+</form>
+
+
+
+<mat-expansion-panel>
+	<mat-expansion-panel-header>
+		<mat-panel-title>
+			Debug Log
+		</mat-panel-title>
+	</mat-expansion-panel-header>
+
+	<pre>
+{{form.value | json}}
+</pre>
+
+</mat-expansion-panel>

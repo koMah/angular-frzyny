@@ -1,0 +1,63 @@
+<div class="tab-content">
+	<h5>Base Values</h5>
+	<div formGroupName="weapon">
+		<div formGroupName="base_values">
+			<mat-form-field class="example-full-width">
+				<mat-label>Damage</mat-label>
+				<input matInput placeholder="1200.00" formControlName="damage">
+  </mat-form-field>
+				<mat-form-field class="example-full-width">
+					<mat-label>Attack Speed</mat-label>
+					<input matInput placeholder="1200.00" formControlName="attack_speed">
+  </mat-form-field>
+					<mat-form-field class="example-full-width">
+						<mat-label>Critical Hit</mat-label>
+						<input matInput placeholder="1200.00" formControlName="critical_hit">
+  </mat-form-field>
+		</div>
+		<mat-divider></mat-divider>
+    <h4>Gems</h4>
+    {{ gemsTable | json }}
+		<div formGroupName="gems">
+					<mat-form-field>
+						<mat-label>Gem Slot</mat-label>
+						<mat-select>
+							<mat-option *ngFor="let e of gemsTable" [value]="e.name">
+								{{e.viewName}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+		</div>
+
+		<h5>Enchantments</h5>
+		<div formGroupName="enchantments_group">
+			<div formArrayName="enchantments">
+
+				<div *ngFor="let group of enchantments.controls; let $i=index" [formGroupName]="$i">
+          <h6>Enchant #{{ $i+1 }}</h6>
+					<mat-form-field>
+						<mat-label>Enchant type</mat-label>
+						<mat-select formControlName="enchant_type">
+							<mat-option *ngFor="let e of enchantsTable" [value]="e.name">
+								{{e.viewName}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<mat-form-field class="example-full-width">
+						<mat-label>Enchant value</mat-label>
+						<input matInput placeholder="1200.00"  formControlName="enchant_value">
+          </mat-form-field>
+				</div>
+				<button  (click)="addAlias()" mat-button color="primary">
+    <mat-icon >add_circle_outline</mat-icon> Add Enchant
+  </button>
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+		<h5>Runes</h5>
+		<div formGroupName="runes">
+
+		</div>
+		<div formGroupName="unique_values"></div>
+	</div>
+</div>
