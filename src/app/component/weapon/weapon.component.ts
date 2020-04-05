@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Enchants } from "../../enchantments";
+import { Enchants, EnchantsTable } from "../../enchantments";
 import { GemsTable, GemsFamily } from "../../gems";
 
 
@@ -19,7 +19,7 @@ import {
   ]
 })
 export class WeaponComponent implements OnInit {
-  enchantsTable = Enchants;
+  enchantsTable = EnchantsTable.weapon2H;
   aaaa = GemsTable;
   gemsFamily = GemsFamily;
   weaponForm;

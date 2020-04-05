@@ -49,8 +49,8 @@ const gemsValuesTypes: Record<string, string> = {
 
 let GemsTable = [] as Gem[];
 
-for (let gem of GemsFamily) {
-  for (const [index, rar] of GemsRarity.entries()) {
+GemsFamily.forEach(function(gem){
+  GemsRarity.forEach(function(rar, index){
     const viewName: string = (rar + " " + gem).trim();
     const name: string = viewName.toLowerCase().replace(/\s/g, "_");
 
@@ -63,6 +63,7 @@ for (let gem of GemsFamily) {
         value_type: gemsValuesTypes[gem.toLowerCase()]
       }
     });
-  }
-}
+  })
+});
+
 export {GemsTable} ;
