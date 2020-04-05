@@ -56,7 +56,10 @@ export class WeaponComponent implements OnInit {
   }
 
   addAlias() {
-    if(this.enchantments.length == 4) return; 
+    if(this.enchantments.length == 4){
+      this.openSnackBar("Items can have only four enchantments")
+       return;
+    } 
     this.enchantments.push(new FormGroup({
       enchant_type : new FormControl(""),
       enchant_value : new FormControl(""),
@@ -64,6 +67,6 @@ export class WeaponComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-    this._snackBar.open(message);
+    this._snackBar.open(message, "Close");
   }
 }
