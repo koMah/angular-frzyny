@@ -62,7 +62,7 @@ export class WeaponComponent implements OnInit {
       this.openSnackBar("Items can have only 4 enchantments")
        return;
     } 
-    this.enchantments.push(new FormGroup({\
+    this.enchantments.push(new FormGroup({
       enchant_type : new FormControl(""),
       enchant_value : new FormControl(""),
     }));

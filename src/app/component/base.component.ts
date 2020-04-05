@@ -15,9 +15,11 @@ import {
 })
 export class BaseComponent implements OnInit {
   form;
-  constructor(private parentForm: FormGroupDirective) {}
+  constructor(private parentForm: FormGroupDirective) {
+    console.log("constructor")
+  }
 
-  ngOnInit() {
+  ngOnInit() {console.log("onInit");
     this.form = this.parentForm.form;
     this.form.addControl(
       "weapon",
