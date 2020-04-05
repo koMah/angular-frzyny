@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Enchants, EnchantsTable } from "../../enchantments";
 import { GemsTable, GemsFamily } from "../../gems";
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 import {
   FormGroup,
@@ -25,7 +25,7 @@ export class WeaponComponent implements OnInit {
   gemsFamily = GemsFamily;
   weaponForm;
   
-  constructor(private parentForm: FormGroupDirective, ) {}
+  constructor(private parentForm: FormGroupDirective, private _snackBar: MatSnackBar) {}
   
   ngOnInit() {
     this.weaponForm = this.parentForm.form;
@@ -61,5 +61,9 @@ export class WeaponComponent implements OnInit {
       enchant_type : new FormControl(""),
       enchant_value : new FormControl(""),
     }));
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
   }
 }
