@@ -24,6 +24,7 @@ export class WeaponComponent implements OnInit {
   aaaa = GemsTable;
   gemsFamily = GemsFamily;
   weaponForm;
+  aa = 0;
   constructor(private parentForm: FormGroupDirective, ) {}
   
   ngOnInit() {
