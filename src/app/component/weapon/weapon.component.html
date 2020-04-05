@@ -38,8 +38,8 @@
 					<mat-form-field>
 						<mat-label>Enchant type</mat-label>
 						<mat-select formControlName="enchant_type">
-							<mat-option *ngFor="let e of enchantsTable" [value]="e.name">
-								{{e.viewName}}
+							<mat-option *ngFor="let e of enchantsTable" [value]="e">
+								{{enchants[e]}}
 							</mat-option>
 						</mat-select>
 					</mat-form-field>

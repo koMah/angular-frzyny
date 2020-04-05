@@ -20,6 +20,7 @@ import {
 })
 export class WeaponComponent implements OnInit {
   enchantsTable = EnchantsTable.weapon2H;
+  enchants = Enchants;
   aaaa = GemsTable;
   gemsFamily = GemsFamily;
   weaponForm;

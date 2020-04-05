@@ -1,74 +1,46 @@
 interface Enchantment {
-  name: string;
-  viewName: string;
+    name: string;
+    viewName: string;
 }
 
-export const Enchants: Record<string, Enchantment> = {
-  inc_dmg: { name: "inc_dmg", viewName: "Increased damage %" },
-  inc_dmg_item: {
-    name: "inc_dmg_item",
-    viewName: "Increased damage on this item %"
-  },
-
-  inc_max_dmg: { name: "inc_max_dmg", viewName: "Increased maximum damage %" },
-  inc_min_dmg: { name: "inc_min_dmg", viewName: "Increased minimum damage %" },
-  inc_hp: { name: "inc_hp", viewName: "Increased Health Points" },
-  inc_hp_item: {
-    name: "inc_hp_item",
-    viewName: "Increased Health Points on this item"
-  },
-
-  travel_speed: { name: "travel_speed", viewName: "Faster Travel Speed" },
-
-  attack_speed: { name: "attack_speed", viewName: "Faster Attack Speed" },
-
-  hit_rate: { name: "hit_rate", viewName: "Increased Critical Hit Rate" },
-  hit_rate_item: {
-    name: "hit_rate_item",
-    viewName: "Increased Critical Hit Rate on this item"
-  },
-
-  crit_dmg: { name: "crit_dmg", viewName: "Critical Damage" },
-
-  inc_armor: { name: "inc_armor", viewName: "Increased Armor Value" },
-  inc_armor_item: {
-    name: "inc_armor_item",
-    viewName: "Increased Armor Value on this item"
-  },
-
-  res_value: { name: "res_value", viewName: "All Resistance Values" },
-  res_value_item: {
-    name: "res_value_item",
-    viewName: "More Resistance on this item"
-  },
-
-  block_strength: { name: "block_strength", viewName: "Block Strength" },
-  block_rate: { name: "block_rate", viewName: "Improved Block Rate" },
-  block_rate_item: {
-    name: "block_rate_item",
-    viewName: "Improved Block Rate on this item"
-  }
+export const Enchants: Record < string, string > = {
+    inc_dmg: "Increased damage %",
+    inc_dmg_item: "Increased damage on this item %",
+    inc_max_dmg: "Increased maximum damage %",
+    inc_min_dmg: "Increased minimum damage %",
+    inc_hp: "Increased Health Points",
+    inc_hp_item: "Increased Health Points on this item",
+    travel_speed: "Faster Travel Speed",
+    attack_speed: "Faster Attack Speed",
+    hit_rate: "Increased Critical Hit Rate",
+    hit_rate_item: "Increased Critical Hit Rate on this item",
+    crit_dmg: "Critical Damage",
+    inc_armor: "Increased Armor Value",
+    inc_armor_item: "Increased Armor Value on this item",
+    res_value: "All Resistance Values",
+    res_value_item: "More Resistance on this item",
+    block_strength: "Block Strength",
+    block_rate: "Improved Block Rate",
+    block_rate_item: "Improved Block Rate on this item"
 };
 
-export const EnchantsTable: Record<string, Enchantment[]> = {
-  amulet: [Enchants.block_strength, Enchants.inc_hp, Enchants.crit_dmg],
-  belt: [Enchants.res_value, Enchants.res_value_item, Enchants.inc_dmg],
-  ring: [Enchants.block_strength, Enchants.inc_hp_item, Enchants.crit_dmg],
-  helmet: [Enchants.inc_dmg, Enchants.inc_hp, Enchants.hit_rate],
-  pauldrons: [Enchants.res_value, Enchants.inc_dmg, Enchants.inc_armor],
-  torso: [Enchants.inc_dmg, Enchants.inc_armor_item, Enchants.inc_armor],
-  gloves: [Enchants.inc_dmg_item, Enchants.inc_hp_item, Enchants.attack_speed],
-  boots: [Enchants.inc_dmg_item, Enchants.inc_hp_item, Enchants.travel_speed],
-  weapon2H: [Enchants.inc_dmg, Enchants.inc_dmg_item, Enchants.crit_dmg],
-  weapon1H: [Enchants.attack_speed, Enchants.inc_dmg_item, Enchants.crit_dmg],
-  adornment: [Enchants.attack_speed, Enchants.hit_rate_item, Enchants.crit_dmg],
-  cloak: [
-    Enchants.inc_max_dmg,
-    Enchants.inc_min_dmg,
-    Enchants.hit_rate,
-    Enchants.attack_speed,
-    Enchants.block_rate
-  ]
+export const EnchantsTable: Record < string, string[] > = {
+    amulet: ["block_strength", "inc_hp", "crit_dmg"],
+    belt: ["res_value", "res_value_item", "inc_dmg"],
+    ring: ["block_strength", "inc_hp_item", "crit_dmg"],
+    helmet: ["inc_dmg", "inc_hp", "hit_rate"],
+    pauldrons: ["res_value", "inc_dmg", "inc_armor"],
+    torso: ["inc_dmg", "inc_armor_item", "inc_armor"],
+    gloves: ["inc_dmg_item", "inc_hp_item", "attack_speed"],
+    boots: ["inc_dmg_item", "inc_hp_item", "travel_speed"],
+    weapon2H: ["inc_dmg", "inc_dmg_item", "crit_dmg"],
+    weapon1H: ["attack_speed", "inc_dmg_item", "crit_dmg"],
+    adornment: ["attack_speed", "hit_rate_item", "crit_dmg"],
+    cloak: [
+        "inc_max_dmg",
+        "inc_min_dmg",
+        "hit_rate",
+        "attack_speed",
+        "block_rate"
+    ]
 };
-
-
