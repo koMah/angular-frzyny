@@ -16,40 +16,46 @@
   </mat-form-field>
 		</div>
 		<mat-divider></mat-divider>
-    <h4>Gems</h4>
-    {{ gemsTable | json }}
+		<h4>Gems</h4>
+		{{ gemsTable | json }}
 		<div formGroupName="gems">
-					<mat-form-field>
-						<mat-label>Gem Slot</mat-label>
-						<mat-select>
-							<mat-option *ngFor="let e of gemsTable" [value]="e.name">
-								{{e.viewName}}
-							</mat-option>
-						</mat-select>
-					</mat-form-field>
+			<mat-form-field>
+				<mat-label>Gem Slot</mat-label>
+				<mat-select>
+					<mat-option *ngFor="let e of gemsTable" [value]="e.name">
+						{{e.viewName}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
 		</div>
 
 		<h5>Enchantments</h5>
 		<div formGroupName="enchantments_group">
 			<div formArrayName="enchantments">
+				<mat-accordion>
 
-				<div *ngFor="let group of enchantments.controls; let $i=index" [formGroupName]="$i">
-          <h6>Enchant #{{ $i+1 }}</h6>
-					<mat-form-field>
-						<mat-label>Enchant type</mat-label>
-						<mat-select formControlName="enchant_type">
-							<mat-option *ngFor="let e of enchantsTable" [value]="e">
-								{{enchants[e]}}
-							</mat-option>
-						</mat-select>
-					</mat-form-field>
-					<mat-form-field class="example-full-width">
-						<mat-label>Enchant value</mat-label>
-						<input matInput placeholder="1200.00"  formControlName="enchant_value">
+
+					<mat-expansion-panel *ngFor="let group of enchantments.controls; let $i=index" [formGroupName]="$i">
+						<mat-expansion-panel-header>
+							<mat-panel-title>Enchantment #{{ $i+1 }}</mat-panel-title>
+						</mat-expansion-panel-header>
+						<mat-form-field class="example-half-width">
+							<mat-label>Enchant type</mat-label>
+							<mat-select formControlName="enchant_type">
+								<mat-option *ngFor="let e of enchantsTable" [value]="e">
+									{{enchants[e]}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+						<mat-form-field class="example-half-width">
+							<mat-label>Enchant value</mat-label>
+							<input matInput placeholder="1200.00"  formControlName="enchant_value">
           </mat-form-field>
-				</div>
+					</mat-expansion-panel>
+				</mat-accordion>
 				<button  (click)="addAlias()" mat-button color="primary">
     <mat-icon >add_circle_outline</mat-icon> Add Enchant
+
   </button>
 			</div>
 		</div>
