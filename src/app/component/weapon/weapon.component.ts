@@ -10,6 +10,8 @@ import {
   FormGroupDirective,
   FormArray
 } from "@angular/forms";
+
+
 @Component({
   selector: "app-weapon",
   templateUrl: "./weapon.component.html",
@@ -57,10 +59,10 @@ export class WeaponComponent implements OnInit {
 
   addAlias() {
     if(this.enchantments.length == 4){
-      this.openSnackBar("Items can have only four enchantments")
+      this.openSnackBar("Items can have only 4 enchantments")
        return;
     } 
-    this.enchantments.push(new FormGroup({
+    this.enchantments.push(new FormGroup({\
       enchant_type : new FormControl(""),
       enchant_value : new FormControl(""),
     }));
