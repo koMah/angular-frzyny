@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Enchants, EnchantsTable } from "../../enchantments";
 import { GemsTable, GemsFamily } from "../../gems";
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { BaseComponent } from "../base.component";
 
 import {
@@ -11,7 +11,6 @@ import {
   FormGroupDirective,
   FormArray
 } from "@angular/forms";
-
 
 @Component({
   selector: "app-weapon",
@@ -27,10 +26,8 @@ export class WeaponComponent extends BaseComponent {
   aaaa = GemsTable;
   gemsFamily = GemsFamily;
   weaponForm;
-  _name = "weapon";
-  constructor(private parentForm: FormGroupDirective, protected _snackBar: MatSnackBar) {
-    super(parentForm);
-  }
-  
 
+  constructor(parentForm: FormGroupDirective, _snackBar: MatSnackBar) {
+    super("weapon", parentForm, _snackBar);
+  }
 }

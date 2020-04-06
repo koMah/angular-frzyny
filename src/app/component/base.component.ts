@@ -9,18 +9,33 @@ import {
   FormArray
 } from "@angular/forms";
 
+export const BaseValues = {
+  "damage" : "Damage",
+  "attack_speed" : "Attack Speed",
+  "hit_rate" : "Critical Hit Rate",
+  "health_points" : "Health Points",
+  "res_value" : "All Resistance Values",
+  "armor_value" : "Armor Value"
+}
+
 @Component({
   template : '',
   viewProviders: [
     { provide: ControlContainer, useExisting: FormGroupDirective }
   ]
 })
+
 export class BaseComponent implements OnInit {
   
   protected _componentForm;
-  protected _name: string = "base";
+  protected baseValues = {
+    damage: new FormControl(""),
+    attack_speed: new FormControl(""),
+    critical_hit: new FormControl("")
+  };
 
   constructor(
+    protected _name: string = "base",
     protected parentForm: FormGroupDirective,
     protected _snackBar: MatSnackBar
   ) {}
@@ -30,11 +45,7 @@ export class BaseComponent implements OnInit {
     this._componentForm.addControl(
       this._name,
       new FormGroup({
-        base_values: new FormGroup({
-          damage: new FormControl(""),
-          attack_speed: new FormControl(""),
-          critical_hit: new FormControl("")
-        }),
+        base_values: new FormGroup(this.baseValues),
         gems: new FormGroup({}),
         enchantments_group: new FormGroup({
           enchantments: new FormArray([
@@ -49,7 +60,7 @@ export class BaseComponent implements OnInit {
       })
     );
 
-    console.log(this._componentForm)
+    //console.log(this._componentForm)
   }
 
   get enchantments() {
@@ -72,6 +83,6 @@ export class BaseComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-    this._snackBar.open(message, "Close");
+    this._snackBar.open(message, "Close", { duration : 3000 });
   }
 }
