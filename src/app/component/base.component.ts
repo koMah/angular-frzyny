@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 import {
   FormGroup,
@@ -9,20 +10,25 @@ import {
 } from "@angular/forms";
 
 @Component({
+  template : '',
   viewProviders: [
     { provide: ControlContainer, useExisting: FormGroupDirective }
   ]
 })
 export class BaseComponent implements OnInit {
-  form;
-  constructor(private parentForm: FormGroupDirective) {
-    console.log("constructor")
-  }
+  
+  protected _componentForm;
+  protected _name: string = "base";
 
-  ngOnInit() {console.log("onInit");
-    this.form = this.parentForm.form;
-    this.form.addControl(
-      "weapon",
+  constructor(
+    protected parentForm: FormGroupDirective,
+    protected _snackBar: MatSnackBar
+  ) {}
+
+  ngOnInit() {
+    this._componentForm = this.parentForm.form;
+    this._componentForm.addControl(
+      this._name,
       new FormGroup({
         base_values: new FormGroup({
           damage: new FormControl(""),
@@ -33,8 +39,8 @@ export class BaseComponent implements OnInit {
         enchantments_group: new FormGroup({
           enchantments: new FormArray([
             new FormGroup({
-              enchant_type : new FormControl(""),
-              enchant_value : new FormControl(""),
+              enchant_type: new FormControl(""),
+              enchant_value: new FormControl("")
             })
           ])
         }),
@@ -42,16 +48,30 @@ export class BaseComponent implements OnInit {
         unique_values: new FormGroup({})
       })
     );
-  }
-  get enchantments() {
-    return this.form.get("weapon.enchantments_group.enchantments") as FormArray;
+
+    console.log(this._componentForm)
   }
 
-  addAlias() {
-    if(this.enchantments.length == 4) return; 
-    this.enchantments.push(new FormGroup({
-      enchant_type : new FormControl(""),
-      enchant_value : new FormControl(""),
-    }));
+  get enchantments() {
+    return this._componentForm.get(
+      this._name + ".enchantments_group.enchantments"
+    ) as FormArray;
+  }
+
+  addEnchantments() {
+    if (this.enchantments.length == 4) {
+      this.openSnackBar("Items can have only 4 enchantments");
+      return;
+    }
+    this.enchantments.push(
+      new FormGroup({
+        enchant_type: new FormControl(""),
+        enchant_value: new FormControl("")
+      })
+    );
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "Close");
   }
 }
